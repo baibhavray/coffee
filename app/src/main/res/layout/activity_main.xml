@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/justJava"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Today's Menu"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:background="#000000"
+            android:textColor="#FBFAFA"
+            android:paddingLeft="25dp"
+            android:paddingTop="15dp"
+            />
+
+        <EditText
+            android:id="@+id/UserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Name"
+            android:inputType="textCapWords"
+            android:layout_below="@id/justJava"
+            android:textSize="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/toppings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOPPINGS"
+            android:textSize="20dp"
+            android:layout_below="@id/UserName"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="16dp"
+            />
+        <CheckBox
+            android:id="@+id/chechBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Whipped Cream"
+            android:textSize="20dp"
+            android:layout_below="@id/toppings"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="24dp"
+            />
+
+        <CheckBox
+            android:id="@+id/chechBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colocate"
+            android:textSize="20dp"
+            android:layout_below="@id/chechBox"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="24dp"
+            />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QUANTITY"
+            android:textSize="25dp"
+            android:layout_below="@id/chechBox2"
+            android:paddingLeft="25dp"
+            android:paddingTop="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/linerL"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_below="@id/quantity"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="25dp"
+                android:paddingBottom="15dp"
+                android:src="@drawable/coffee" />
+
+
+            <Button
+                android:id="@+id/minus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="35dp"
+                android:onClick="decrement"
+                android:paddingTop="0dp"
+                android:text="-"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="0"
+                android:textColor="#000000"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/plus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="25dp"
+                android:onClick="increment"
+                android:paddingTop="0dp"
+                android:text="+"
+                android:textSize="40dp" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cappuccino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantity"
+            android:text="Cappuccino"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="70dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linerL">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL PRICE"
+                android:textSize="25dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="25dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/rupee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0"
+                android:textSize="40dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="35dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:onClick="price"/>
+
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/ThanQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linerL"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="00dp"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:textColor="#000000"
+            />
+
+
+        <Button
+            android:id="@+id/order"
+            android:layout_width="155dp"
+            android:layout_height="55dp"
+            android:layout_below="@id/ThanQ"
+            android:text="PLACE  ORDER"
+            android:textSize="20dp"
+            android:padding="7dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="submit"
+            />
+
+
+
+
+
+    </RelativeLayout>
+</ScrollView>
