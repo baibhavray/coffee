@@ -14,24 +14,20 @@ import android.widget.Toast;
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
-    CheckBox checkbox;
-    CheckBox checkbox2;
-    int items;
-    boolean cBox;
-    boolean cBox2;
-    String thanx;
+    int quantity;
+    CheckBox creamCheckbox;
+    CheckBox chocolateCheckbox;
+    String thankYouMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkbox = (CheckBox) findViewById(R.id.chechBox);
-        cBox = checkbox.isChecked();
-        checkbox2 = (CheckBox) findViewById(R.id.chechBox2);
-        cBox2 = checkbox2.isChecked();
-        items = quantity;
+        creamCheckbox = findViewById(R.id.creamCheck);
+        chocolateCheckbox = findViewById(R.id.chocolateCheck);
+
+        quantity = 0;
     }
 
     public void submit(View view) {
@@ -41,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.setData(Uri.parse("mailto:"));
+        // only email apps should handle this
         intent.putExtra(Intent.EXTRA_SUBJECT, "Yor order is ready");
         intent.putExtra(Intent.EXTRA_TEXT, mainMessage());
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -50,17 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private int calcPrice() {
-        return quantity * 5;
-    }
-
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.zero);
-        quantityTextView.setText("" + number);
+        TextView quantityTextView = findViewById(R.id.itemTV);
+        quantityTextView.setText(String.valueOf(number));
     }
 
     private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.rupee);
+        TextView priceTextView = findViewById(R.id.rupee);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
@@ -78,32 +71,27 @@ public class MainActivity extends AppCompatActivity {
         display(quantity);
     }
 
-//    public void displayMessage(String message) {
-//        TextView priceTextView = (TextView) findViewById(R.id.ThanQ);
-//        priceTextView.setText(message);
-//    }
-
     public String mainMessage() {
-        EditText editText = (EditText) findViewById(R.id.UserName);
+        EditText editText = findViewById(R.id.UserName);
         String name = editText.getText().toString();
-        String a = "Name:" + name + "\nQuantity:" + items;
+        String a = "Name: " + name + "\nQuantity:" + quantity;
 
-        if (cBox && cBox2) {
+        if (creamCheckbox.isChecked() && chocolateCheckbox.isChecked()) {
             displayPrice(quantity * 9);
-            thanx = a + "\nYou have added Whipped Cream & Chocolate!!\n" + items + " items are on it's way...\nThank You...Visit Again :)";
-        } else if (cBox || cBox2) {
+            thankYouMessage = a + "\nYou have added Whipped Cream & Chocolate!!\n" + quantity + " items are on it's way...\nThank You...Visit Again :)";
+        } else if (creamCheckbox.isChecked() || chocolateCheckbox.isChecked()) {
             displayPrice(quantity * 7);
-            if (cBox) {
-                thanx = a + "\nYou have added Whipped Cream & Chocolate!!\nYour order is on it's way...\nThank You...Visit Again :)";
+            if (creamCheckbox.isChecked() ) {
+                thankYouMessage = a + "\nYou have added Whipped Cream & Chocolate!!\nYour order is on it's way...\nThank You...Visit Again :)";
             } else {
-                thanx = a + "\nYou have added Chocolate!!\nYour order is on it's way...\nThank You...Visit Again :)";
+                thankYouMessage = a + "\nYou have added Chocolate!!\nYour order is on it's way...\nThank You...Visit Again :)";
             }
 
         } else {
             displayPrice(quantity * 5);
-            thanx = a + "\nYour order is on it's way...\nThank You...Visit Again :)";
+            thankYouMessage = a + "\nYour order is on it's way...\nThank You...Visit Again :)";
         }
-            return thanx;
+            return thankYouMessage;
     }
 
 
